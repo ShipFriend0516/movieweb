@@ -9,6 +9,7 @@ import Detail from './Routes/Detail';
 function App() {
 
   return (
+    // basename={`${process.env.PUBLIC_URL}/`}
     <Router>
       <Routes>
         <Route path='/movie/:id' element={<Detail/>} />

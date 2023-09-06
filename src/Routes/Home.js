@@ -9,7 +9,7 @@ function Home() {
   const getMovies = async () => {
     const json = await (
       await fetch(
-        'https://yts.mx/api/v2/list_movies.json?minimum_rating=2&sort_by=year'
+        'https://yts.mx/api/v2/list_movies.json?sort_by=rating&order_by=desc&limit=20&year=2023'
         )
       ).json()
     setMovies(json.data.movies);
@@ -21,13 +21,18 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className='gridWrap'>
       {loading ? <h1>Loading...</h1> 
-      : 
-      <div>
+      :
+      <>
+      <div className='date'>
+        <span>{new Date().toLocaleDateString()}</span>
+      </div>
+      <h1>Movie List</h1>
+      <div className='movieGrid'>
         {movies.map((movie) => {
           return (
-            <Movie 
+            <Movie
               key={movie.id}
               id={movie.id}
               coverImg={movie.medium_cover_image}
@@ -38,6 +43,7 @@ function Home() {
           )
         })}
       </div>
+      </>
       }
     </div>
   );

@@ -3,17 +3,20 @@ import {Link} from 'react-router-dom'
 
 const Movie = ({id, coverImg, title, summary, genres}) => {
   return (
-    <div>
+    <div className='movie'>
       <img src={coverImg} alt={title} />
-      <h2>
-        <Link to={`/movie/${id}`}>{title}</Link>
-      </h2>
-      <p>{summary}</p>
-      <ul>
-        {genres.map((genre) =>
-          <li key={genre}>{genre}</li>
-        )}
-      </ul>
+      <div>
+        <h2>
+          <Link to={`/movie/${id}`}>{title}</Link>
+        </h2>
+        <p>{summary.length > 200 ? summary.split(' ').slice(0, 30).join(' ') : summary}</p>
+        <p>Genres:</p>
+        <ul>
+          {genres.map((genre) =>
+            <li key={genre}>{genre}</li>
+          )}
+        </ul>
+      </div>
     </div>
 
   )
