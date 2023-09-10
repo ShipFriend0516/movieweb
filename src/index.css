@@ -2,16 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'omyu_pretty';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'omyu_pretty';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background: linear-gradient(#7d9b78,#2b2a2a)
+
+  
 }
 
 code {
@@ -21,23 +27,33 @@ code {
 
 .gridWrap {
   width: 100vw;
+  background: linear-gradient(#7d9b78,#2b2a2a) 
+}
+
+.backgroundGradient {
+  width: 100vw;
+  background: linear-gradient(#7d9b78,#2b2a2a) 
+}
+
+.darkGray {
+  background: #2b2a2a;
 }
 
 .gridWrap h1 {
   display: block;
   width: 100%;
 
-  color: #fff; font-family: 'Open Sans Condensed', sans-serif; font-size: 64px; font-weight: 700; line-height: 64px; margin: 0 0 0; padding: 20px 30px; text-align: center; text-transform: uppercase;
+  color: #fff; font-family: 'omyu_pretty', sans-serif; font-size: 64px; font-weight: 700; line-height: 64px; margin: 0 0 0; padding: 20px 30px; text-align: center; text-transform: uppercase;
 }
 
-.date { margin-top: 10px; color: #fff; display: block; font-family: 'Open Sans', sans-serif; font-size: 16px; position: relative; text-align: center; z-index: 1; }
+.date { padding: 10px 0; color: #fff; display: block; font-family: 'omyu_pretty', sans-serif; font-size: 16px; position: relative; text-align: center; z-index: 1; }
 
 
-.date:before { border-top: 1px solid #fff; content: ""; position: absolute; top: 12px; left: 0; width: 100%; z-index: -1; }
+.date:before { border-top: 1px solid #fff; content: ""; position: absolute; top: 24px; left: 0; width: 100%; z-index: -1; }
 
 .date span,
 
-.author span { font-size: 1.2em; background: #7d9b78; padding: 0 10px; text-transform: uppercase; }
+.author span { font-size: 1.2em; background: #7d9b78; padding: 10px 10px; text-transform: uppercase; }
 
 footer {
   display: flex;
@@ -91,7 +107,7 @@ footer {
 
 .movieDetailWrap {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .movieDetail {
@@ -107,8 +123,9 @@ footer {
 }
 
 .movieDetail img {
-  width: 100%;
+  max-width: 100%;
   min-height: 500px;
+  max-height: 980px;
   margin: 0 auto;
   border-radius: 1em;
 }
@@ -147,6 +164,12 @@ footer {
   font-weight: 500;
 }
 
+.genreAndRating small.rating {
+  font-size: 1.1em;
+}
+
+
+
 .btnsWrap {
   display: flex;
 }
@@ -168,6 +191,5 @@ footer {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-
 
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Movie from "../Components/Movie";
 import Footer from "../Components/Footer";
-import christ from "../Styles/Christmas.css";
+import Pagination from "../Components/Pagination";
 
 function Home() {
   const fetch = require("node-fetch");
@@ -13,8 +13,7 @@ function Home() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTQwOThjZGZhZGIwM2U0YWNjZDc4OWU5NThhMTU0OCIsInN1YiI6IjY0ZmMzNzkxZTBjYTdmMDEwZGU4NTM5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gSg60wlfcCgpWc9n-E2jV1uO5SqLDR0S_h9xgcMCa2w",
+      Authorization: `Bearer ${process.env.API_KEY}`,
     },
   };
 
@@ -35,7 +34,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="gridWrap">
+    <div className="gridWrap backgroundGradient">
       {loading ? (
         <h1>Loading...</h1>
       ) : (
@@ -59,6 +58,7 @@ function Home() {
               );
             })}
           </div>
+          <Pagination />
           <Footer />
         </>
       )}
