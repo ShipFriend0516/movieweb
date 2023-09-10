@@ -1,0 +1,6 @@
+.christmas {
+  font-size: 36px; /* Increase font size */
+  font-family: 'Cursive', cursive; /* Cursive font */
+  color: #d32f2f; /* Deep red text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for emphasis */
+}

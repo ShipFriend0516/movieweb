@@ -1,5 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -34,6 +39,18 @@ code {
 
 .author span { font-size: 1.3em; background: rgb(228, 230, 206); padding: 0 10px; text-transform: uppercase; }
 
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  height: 200px;
+  color: rgb(195, 188, 188);
+  background-color: rgb(69, 91, 65);
+}
+
 .movieGrid {
   width: 100%;
   display: grid;
@@ -42,6 +59,8 @@ code {
 
 .movie {
   display: flex;
+  text-decoration: none;
+  color: #000;
   border-radius: 2rem;
   padding: 20px;
   box-shadow: 0px 4px 10px gray;
@@ -53,9 +72,114 @@ code {
 .movie:hover {
   box-shadow: 0px 4px 20px gray;
   transition: .3s;
+  text-decoration: none;
+  
 }
 
 .movie img {
   border-radius: 1rem;
 }
 
+/* detail */
+
+.blurWrap {
+  width: 100%;
+  height: 100%;
+  font-size: 2em;
+  backdrop-filter: blur(2px);
+}
+
+.movieDetailWrap {
+  width: 100vw;
+  height: 100vh;
+}
+
+.movieDetail {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 40px;
+  border-radius: 1em;
+  background-color: white;
+  box-shadow: 0px 0px 10px gray;
+}
+
+.movieDetail img {
+  width: 100%;
+  min-height: 500px;
+  margin: 0 auto;
+  border-radius: 1em;
+}
+
+.movieDetail img , .movieDetail {
+  animation-name: fadein;
+  /* animation-iteration-count: infinite; */
+  animation-timing-function: ease-out;
+  animation-duration: .5s;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(1);
+  }
+}
+
+.movieDetail h1 > span {
+  font-size: .7em;
+  font-weight: 400;
+}
+
+.genreAndRating {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.btnsWrap {
+  display: flex;
+}
+
+.ytBtn {
+  color: white;
+  background-color: rgb(225, 84, 84);
+  flex-grow: 1;
+}
+
+.ytBtn:hover {
+  background-color: rgb(220, 21, 21);
+}
+
+@media (max-width: 1100px) {
+  .movieGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+
+.neonText {
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
