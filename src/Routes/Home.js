@@ -54,6 +54,7 @@ function Home() {
                   title={movie.title}
                   overview={movie.overview}
                   genres={movie.genre_ids}
+                  vote={movie.vote_average}
                 />
               );
             })}

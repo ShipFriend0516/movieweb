@@ -92,20 +92,23 @@ function findGenreNameById(id) {
   }
 }
 
-const Movie = ({ id, coverImg, title, overview, genres }) => {
+const Movie = ({ id, coverImg, title, overview, genres, vote }) => {
   return (
-    <Link to={`/movie/${id}`} className="movie">
+    <Link to={`/movie/${id}`} className="movie shadow-lg">
       <img src={`https://image.tmdb.org/t/p/w200${coverImg}`} alt={title} />
-      <div className="flex flex-col justify-evenly">
-        <h2 className="text-3xl">{title}</h2>
+      <div className="flex flex-col justify-evenly w-full">
+        <div className='flex flex-row justify-between'>
+          <h2 className="flex-grow-1 text-3xl">{title}</h2>
+          <small className={`w-10 h-10 flex justify-center items-center rounded-full font-light ${vote < 7 ? 'bg-red-300' : 'bg-green-300'}`}>{vote.toFixed(1)}</small>
+        </div>
         <p className="flex-grow-1">
           {overview.length > 200 ? overview.split(" ").slice(0, 30).join(" ") + "..." : overview}
-          {!overview && <div>No Overview...</div>}
+          {!overview && <span>No Overview...</span>}
         </p>
         <div>
           {genres.map((genre, index) => (
             <span
-              className={`px-5 py-2 mx-2 rounded-lg ${
+              className={`px-2 py-2 mx-2 rounded-lg ${
                 index % 2 === 0 ? "bg-red-200" : "bg-blue-200"
               }`}
               key={genre}

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const Detail = () => {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState(null);
+  const [rateColor, setRateColor] = useState('red')
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -27,6 +28,10 @@ const Detail = () => {
 
   useEffect(() => {
     getMovie();
+
+
+    
+    console.log(rateColor)
   }, []);
 
   return (
@@ -34,17 +39,19 @@ const Detail = () => {
       {loading ? (
         <div className="blurWrap movieDetail">Movie is loading...</div>
       ) : (
+        <>
         <div className="movieDetail">
-          <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
-          <h1 className="text-3xl p-2">
+          <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt='poster'/>
+          <h1 className="text-3xl p-2 mt-3">
             {movie.title}{" "}
             <span>
               {movie.original_title}({movie.original_language})
             </span>
           </h1>
-          <p className="genreAndRating  p-2">
+          <h2 className='text-gray-700 px-2'>{movie.tagline}</h2>
+          <p className="genreAndRating p-2">
             장르 : {movie.genres.map((genre) => genre.name).join(", ")}
-            <small>{movie.rating}</small>
+            <small className={`w-10 h-10 flex justify-center items-center rounded-full font-light ${movie.vote_average < 7 ? 'bg-red-300' : 'bg-green-300'}`}>{movie.vote_average.toFixed(1)}</small>
           </p>
           <p className=" p-2">{movie.overview}</p>
           <div className="btnsWrap p-2">
@@ -61,6 +68,7 @@ const Detail = () => {
             </button>
           </div>
         </div>
+        </>
       )}
     </div>
   );
