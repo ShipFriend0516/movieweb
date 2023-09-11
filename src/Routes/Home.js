@@ -13,7 +13,7 @@ function Home() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: `Bearer ${process.env.API_KEY}`,
+      Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
     },
   };
 
@@ -34,7 +34,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="gridWrap backgroundGradient">
+    <div className="gridWrap backgroundGradient min-h-full">
       {loading ? (
         <h1>Loading...</h1>
       ) : (

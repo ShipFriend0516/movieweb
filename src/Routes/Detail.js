@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Detail = () => {
-  const [loading, setLoading] = useState(true);
+  const [movieLoading, setMovieLoading] = useState(true);
+  const [movieLinkLoading, setMovieLinkLoading] = useState(true);
   const [movie, setMovie] = useState(null);
   const [movieVideo, setMovieVideo] = useState(null);
   const navigate = useNavigate();
@@ -25,14 +26,14 @@ const Detail = () => {
     const json = await (await fetch(url, options)).json();
     console.log(json);
     setMovie(json);
-    // setLoading(false);
+    setMovieLoading(false);
   };
 
   const getMovieVideo = async () => {
     const json = await (await fetch(urlForVideo, options)).json();
     console.log("json2", json);
     setMovieVideo(json);
-    setLoading(false);
+    setMovieLinkLoading(false);
   };
 
   useEffect(() => {
@@ -42,12 +43,13 @@ const Detail = () => {
 
   return (
     <div className="movieDetailWrap p-3 backgroundGradient">
-      {loading ? (
+      {movieLinkLoading || movieLoading ? (
         <div className="blurWrap movieDetail">Movie is loading...</div>
       ) : (
         <>
           <div className="movieDetail">
-            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="poster" />
+            {movie.poster_path &&
+            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="poster" /> }
             <h1 className="text-3xl p-2 mt-3">
               {movie.title}{" "}
               <span>
@@ -95,10 +97,13 @@ const Detail = () => {
                 className="ytBtn p-1 m-1"
                 onClick={() => {
                   console.log(movieVideo);
-                  window.open(
-                    `https://www.youtube.com/watch?v=${movieVideo.results[0].key}`,
-                    "_blank"
-                  );
+                  if(movieVideo.results.length === 0) {
+                    window.open(
+                      `https://www.youtube.com/watch?v=${movieVideo.results[0].key}`,
+                      "_blank"
+                    );
+                  }
+                  
                 }}
                 disabled={movieVideo.results.length !== 0 ? 0 : 1}
               >
