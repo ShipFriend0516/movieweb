@@ -97,7 +97,7 @@ const Detail = () => {
                 className="ytBtn p-1 m-1"
                 onClick={() => {
                   console.log(movieVideo);
-                  if(movieVideo.results.length === 0) {
+                  if(movieVideo.results.length !== 0) {
                     window.open(
                       `https://www.youtube.com/watch?v=${movieVideo.results[0].key}`,
                       "_blank"
