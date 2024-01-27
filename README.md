@@ -4,11 +4,15 @@ Showing 20 information of movies. And You can check some movie's detail page.
 
 
 ## Using Techs
-React
+
 API : TMDB (Realtime movie information service)
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 ## CSS Frameworks
 Tailwind, Water.css 
+
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ## Deployment 
 https://shipfriend0516.github.io/movieweb/
